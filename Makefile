@@ -6,7 +6,6 @@ all: $(objects)
 .PHONY: all indent clean
 
 $(objects): % : %.tex
-	latexindent $@ -o $@
 	$(xelatex) $<
 	$(bibtex) out\$@
 	$(xelatex) $<
