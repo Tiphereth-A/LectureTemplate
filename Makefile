@@ -2,7 +2,7 @@ objects = lecture slice
 xelatex = xelatex -synctex=1 -interaction=nonstopmode -file-line-error -include-directory=class -output-directory=out
 bibtex = bibtex -include-directory=bib
 
-all: $(objects)
+all: clean $(objects)
 .PHONY: all indent clean
 
 $(objects): % : %.tex
