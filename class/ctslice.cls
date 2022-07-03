@@ -1,7 +1,10 @@
+% !TeX TS-program = xelatex
+% !BIB TS-program = bibtex
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{ctlecture}[2022/07/01 v0.1 Tifa's Lecture Note Template document class]
+\ProvidesClass{ctslice}[2022/07/01 v0.1 Tifa's Slice Template document class]
 
-\LoadClass[a4paper,12pt]{report}
+\LoadClass[10pt]{beamer}
+\usetheme[progressbar=frametitle]{metropolis}
 
 \RequirePackage{algorithm}
 \RequirePackage{algpseudocode}
@@ -9,6 +12,7 @@
 \RequirePackage{amsmath}
 \RequirePackage{amssymb}
 \RequirePackage{amsthm}
+\RequirePackage{appendixnumberbeamer}
 \RequirePackage{bm}
 \RequirePackage{bigdelim}
 \RequirePackage{bigstrut}
@@ -18,16 +22,9 @@
 \RequirePackage[UTF8]{ctex}
 \RequirePackage{fancyhdr}
 \RequirePackage{hyperref}
-\RequirePackage[centering,scale=0.8]{geometry}
-\RequirePackage{listings}
-\RequirePackage{longtable}
-\RequirePackage{multirow}
-\RequirePackage{multicol}
-\RequirePackage{pdflscape}
 \RequirePackage{subcaption}
 \RequirePackage{tabularx}
 \RequirePackage{tikz}
-\RequirePackage[titles]{tocloft}
 \RequirePackage{url}
 \RequirePackage{xcolor}
 \RequirePackage{xspace}
@@ -45,19 +42,6 @@
 
 \newcommand{\imgdir}{image/}
 
-
-% Throrem
-\newtheorem{theorem}{定理}[section]
-\newtheorem{corollary}{推论}[theorem]
-\newtheorem{lemma}[theorem]{引理}
-
-\theoremstyle{definition}
-\newtheorem{definition}{定义}[section]
-
-\theoremstyle{remark}
-\newtheorem*{remark}{注意}
-
-\renewcommand\qedsymbol{$\blacksquare$}
 
 % User defined math command
 \newcommand{\lcm}{\operatorname{lcm}}
@@ -108,7 +92,7 @@
 
 
 % Bib
-\newcommand{\listofbib}[1]{
+\newcommand{\listofbib}{
     \nocite{*}
     \bibliographystyle{plain}
     \bibliography{references}
