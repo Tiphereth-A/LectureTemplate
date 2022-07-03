@@ -3,7 +3,7 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{ctlecture}[2022/07/01 v0.1 Tifa's Lecture Note Template document class]
 
-\LoadClass[a4paper,12pt]{report}
+\LoadClass[a4paper,12pt,dvipsnames,svgnames,x11names]{report}
 
 \RequirePackage[centering,scale=0.8]{geometry}
 \RequirePackage{longtable}
