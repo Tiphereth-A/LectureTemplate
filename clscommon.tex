@@ -1,0 +1,175 @@
+\usetheme[progressbar=frametitle,block=fill]{metropolis}
+\setbeamertemplate{theorems}[numbered]
+\RequirePackage{appendixnumberbeamer}
+
+\RequirePackage{xcolor}
+\RequirePackage{algorithm}
+\RequirePackage{algpseudocode}
+\RequirePackage{amsfonts}
+\RequirePackage{amsmath}
+\RequirePackage{amssymb}
+\RequirePackage{amsthm}
+\RequirePackage{bm}
+\RequirePackage{bigdelim}
+\RequirePackage{bigstrut}
+\RequirePackage{bookmark}
+\RequirePackage{booktabs}
+\RequirePackage[scale=2]{ccicons}
+\RequirePackage{cprotect}
+\RequirePackage[UTF8]{ctex}
+\RequirePackage{etoolbox}
+\RequirePackage{extpfeil}
+\RequirePackage{fancyhdr}
+\RequirePackage{hyperref}
+\RequirePackage{ifthen}
+\RequirePackage{subcaption}
+\RequirePackage{tabularx}
+\RequirePackage{tikz}
+\RequirePackage{url}
+\RequirePackage{xspace}
+\RequirePackage{longtable}
+\RequirePackage{mathtools}
+\RequirePackage{multirow}
+\RequirePackage{multicol}
+\RequirePackage{geometry}
+\RequirePackage{xfp}
+\RequirePackage{pgfplots}
+\RequirePackage{ulem}
+
+\usepgfplotslibrary{dateplot}
+\usepgfplotslibrary{groupplots}
+
+\usetikzlibrary{automata}
+\usetikzlibrary{backgrounds}
+\usetikzlibrary{calc}
+\usetikzlibrary{intersections}
+\usetikzlibrary{math}
+\usetikzlibrary{positioning}
+\usetikzlibrary{shapes.geometric}
+\usetikzlibrary{shapes.misc}
+
+
+% Font setting
+\RequirePackage{eulervm}
+\RequirePackage{fontspec}
+\setsansfont{Fira Sans}
+\setmonofont{Fira Code}[Contextuals=Alternate]
+
+
+% Image
+\newcommand{\includeimage}[3][scale=1]{
+	\begin{figure}
+		\centering
+		\includegraphics[#1]{image/#2}
+		\caption{#3}
+		\label{fig:#2}
+	\end{figure}
+}
+
+\newcommand{\includetikzimage}[2]{
+	\begin{figure}
+		\centering
+		\input{image/#1}
+		\caption{#2}
+		\label{fig:#1}
+	\end{figure}
+}
+
+
+% Code style
+\RequirePackage{listings}
+\RequirePackage{lstfiracode}
+\lstdefinestyle{common}{
+	style=FiraCodeStyle,
+	belowcaptionskip=1\baselineskip,
+	breaklines=true,
+	xleftmargin=\parindent,
+	showstringspaces=true,
+	numbers=left,
+	numberstyle=\ttfamily\small,
+	basicstyle=\ttfamily,
+	stepnumber=1,
+	frame=single
+}
+
+\lstdefinestyle{code}{
+	style=common,
+	keywordstyle=\bfseries\color{green!40!black},
+	commentstyle=\itshape\color{red!80!black},
+	identifierstyle=\color{blue},
+	stringstyle=\color{purple!40!black}
+}
+
+\lstdefinestyle{c++}{
+	style=code,
+	language=C++
+}
+
+\lstdefinestyle{c}{
+	style=code,
+	language=C
+}
+
+\lstdefinestyle{py}{
+	style=code,
+	language=Python
+}
+
+\lstdefinestyle{java}{
+	style=code,
+	language=Java
+}
+
+\newcommand{\includecode}[2][c++]{
+	\vspace{0.3cm}
+	\lstset{style=#1}
+	\lstinputlisting[label={code:#2}]{code/#2}
+	\vspace{0.3cm}
+}
+
+\lstdefinestyle{pascal}{
+	style=code,
+	language=Pascal
+}
+
+
+% Bib
+\newcommand{\listofbib}[1][references]{
+	\nocite{*}
+	\bibliographystyle{plain}
+	\bibliography{bib/#1}
+}
+
+
+% Throrem
+\renewcommand\qedsymbol{\(\blacksquare\)}
+
+
+% User defined math command
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\nequiv}{~{\equiv}\llap{/\,}~}
+\newcommand{\subjectto}{~s.t.~}
+
+
+% Others
+\newcommand{\forcenewline}{\leavevmode\newline}
+\newcommand{\questions}{
+	\begin{frame}[standout]
+		Questions?
+	\end{frame}
+}
+
+
+\newcommand{\drawcsys}[5][0]{% [step]{xmin}{xmax}{ymin}{ymax}
+	\def\vstep{#1}
+	\def\vxmin{#2}
+	\def\vxmax{#3}
+	\def\vymin{#4}
+	\def\vymax{#5}
+
+	\ifstrequal{#1}{0}{}{%
+		\draw[help lines,step=\vstep] (\vxmin,\vymin) grid (\vxmax,\vymax);
+	}
+	\draw[->,thick] (\vxmin,0) -- (\vxmax,0) node[anchor=north] {\(x\)};
+	\draw[->,thick] (0,\vymin) -- (0,\vymax) node[anchor=east]  {\(y\)};
+}
