@@ -84,8 +84,8 @@
 
 
 % Bib
-\newcommand{\listofbib}{
+\newcommand{\listofbib}[1][references]{
     \nocite{*}
     \bibliographystyle{plain}
-    \bibliography{references}
+    \bibliography{#1}
 }
