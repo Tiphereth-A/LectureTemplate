@@ -6,7 +6,6 @@
 \LoadClass[a4paper,12pt]{report}
 
 \RequirePackage[centering,scale=0.8]{geometry}
-\RequirePackage{listings}
 \RequirePackage{longtable}
 \RequirePackage{multirow}
 \RequirePackage{multicol}
