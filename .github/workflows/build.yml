@@ -52,7 +52,6 @@ jobs:
               uses: xu-cheng/latex-action@v2
               with:
                   root_file: slice.tex
-                  working_directory: solution
                   latexmk_use_xelatex: true
                   args: -synctex=1 -interaction=nonstopmode -file-line-error -include-directory=class -output-directory=out
 
