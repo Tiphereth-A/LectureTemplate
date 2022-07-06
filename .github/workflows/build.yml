@@ -10,17 +10,18 @@ jobs:
               uses: actions/checkout@v3
               with:
                   submodules: "recursive"
-
             - name: Indent TeX files
               uses: xu-cheng/texlive-action/full@v1
               with:
                   run: |
                       apk add make
                       make indent
-                      git add *.tex
-                      git config --local user.email "actions@github.com"
-                      git config --local user.name "github-actions[bot]"
-                      git diff --quiet && git diff --staged --quiet || git commit -am "style: Indent TeX file [skip ci]"
+            - name: Commit files 
+              run: |
+                  git add *.tex
+                  git config --local user.email "actions@github.com"
+                  git config --local user.name "github-actions[bot]"
+                  git diff --quiet && git diff --staged --quiet || git commit -am "style: Indent TeX file [skip ci]"
 
     build:
         needs: [indent]
@@ -30,7 +31,6 @@ jobs:
               uses: actions/checkout@v3
               with:
                   submodules: "recursive"
-
             - name: Indent and build TeX files
               uses: xu-cheng/texlive-action/full@v1
               with:
