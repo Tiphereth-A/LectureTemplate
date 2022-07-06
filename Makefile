@@ -15,4 +15,4 @@ indent: $(addsuffix .tex,$(objects))
 	-$(foreach fn,$^,latexindent $(fn) -o $(fn);)
 
 clean:
-	-RM out/*.{aux,bbl,bcf,blg,cb,cb2,fls,fmt,fot,lb,lof,log,lot,nav,out,pre,snm,synctex,synctex.gz,toc,vrb}
+	-rm -f out/*.{aux,bbl,bcf,blg,cb,cb2,fls,fmt,fot,lb,lof,log,lot,nav,out,pre,snm,synctex,synctex.gz,toc,vrb}
