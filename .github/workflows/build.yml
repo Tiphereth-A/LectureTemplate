@@ -23,7 +23,7 @@ jobs:
         steps:
             - name: Commit files
               run: |
-                  git add *.tex
+                  git add .
                   git config --local user.email "actions@github.com"
                   git config --local user.name "github-actions[bot]"
                   git diff && git diff --staged || git commit -am "style: Indent TeX file [skip ci]"
