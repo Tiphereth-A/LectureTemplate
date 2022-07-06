@@ -47,13 +47,13 @@ jobs:
               with:
                   root_file: lecture.tex
                   latexmk_use_xelatex: true
-                  args: -synctex=1 -interaction=nonstopmode -file-line-error -include-directory=class -output-directory=out
+                  args: -xelatex -synctex=1 -interaction=nonstopmode -file-line-error -include-directory=class -output-directory=out
             - name: Build slice.tex
               uses: xu-cheng/latex-action@v2
               with:
                   root_file: slice.tex
                   latexmk_use_xelatex: true
-                  args: -synctex=1 -interaction=nonstopmode -file-line-error -include-directory=class -output-directory=out
+                  args: -xelatex -synctex=1 -interaction=nonstopmode -file-line-error -include-directory=class -output-directory=out
 
     release:
         needs: [build]
