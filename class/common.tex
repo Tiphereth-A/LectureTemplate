@@ -33,8 +33,14 @@
 \setmonofont{Fira Code}[Contextuals=Alternate]
 
 
-\newcommand{\imgdir}{image/}
-
+\newcommand{\includeimage}[3][scale=1]{
+    \begin{figure}
+        \centering
+        \includegraphics[#1]{image/#2}
+        \caption{#3}
+        \label{fig:#2}
+    \end{figure}
+}
 
 % User defined math command
 \newcommand{\lcm}{\operatorname{lcm}}
@@ -75,10 +81,10 @@
     stringstyle=\color{purple!40!black},
 }
 
-\newcommand{\includecode}[3][c++]{
+\newcommand{\includecode}[2][c++]{
     \vspace{0.3cm}
     \lstset{style=#1}
-    \lstinputlisting[label={code:#2}]{code/#2.#3}
+    \lstinputlisting[label={code:#2}]{code/#2}
     \vspace{0.3cm}
 }
 
