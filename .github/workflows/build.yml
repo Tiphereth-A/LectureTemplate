@@ -42,12 +42,19 @@ jobs:
               uses: actions/checkout@v3
               with:
                   submodules: "recursive"
-            - name: Indent and build TeX files
-              uses: xu-cheng/texlive-action/full@v1
+            - name: Build lecture.tex
+              uses: xu-cheng/latex-action@v2
               with:
-                  run: |
-                      apk add make
-                      make
+                  root_file: lecture.tex
+                  latexmk_use_xelatex: true
+                  args: -synctex=1 -interaction=nonstopmode -file-line-error -include-directory=class -output-directory=out
+            - name: Build slice.tex
+              uses: xu-cheng/latex-action@v2
+              with:
+                  root_file: slice.tex
+                  working_directory: solution
+                  latexmk_use_xelatex: true
+                  args: -synctex=1 -interaction=nonstopmode -file-line-error -include-directory=class -output-directory=out
 
     release:
         needs: [build]
