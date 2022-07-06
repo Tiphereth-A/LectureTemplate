@@ -1,0 +1,52 @@
+name: Indent and build
+on:
+    workflow_dispatch:
+
+jobs:
+    indent:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v3
+              with:
+                  submodules: "recursive"
+
+            - name: Indent TeX files
+              uses: xu-cheng/texlive-action/full@v1
+              with:
+                  run: |
+                      apk add make
+                      make indent
+                      git add *.tex
+                      git config --local user.email "actions@github.com"
+                      git config --local user.name "github-actions[bot]"
+                      git diff --quiet && git diff --staged --quiet || git commit -am "style: Indent TeX file [skip ci]"
+
+    build:
+        needs: [indent]
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v3
+              with:
+                  submodules: "recursive"
+
+            - name: Indent and build TeX files
+              uses: xu-cheng/texlive-action/full@v1
+              with:
+                  run: |
+                      apk add make
+                      make
+
+    release:
+        needs: [build]
+        runs-on: ubuntu-latest
+        steps:
+            - name: Release Package
+              uses: marvinpinto/action-automatic-releases@latest
+              with:
+                  repo_token: "${{ secrets.GITHUB_TOKEN }}"
+                  automatic_release_tag: latest
+                  prerelease: false
+                  files: |
+                      out/*.pdf
