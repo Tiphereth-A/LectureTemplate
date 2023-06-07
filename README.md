@@ -28,3 +28,7 @@ make indent
 # Remove all nonessential files
 make clean
 ```
+
+## Release
+
+Just add a tag and push to GitHub. You can also run workflow manually after push a tag.
